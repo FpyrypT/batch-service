@@ -1,0 +1,22 @@
+server:
+  port: 8084
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: yourPassword
+    url: jdbc:postgresql://localhost:5432/batchservice
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+  batch:
+    initialize-schema: always
