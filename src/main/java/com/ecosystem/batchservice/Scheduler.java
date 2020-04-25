@@ -1,6 +1,9 @@
 package com.ecosystem.batchservice;
 
-import org.springframework.batch.core.*;
+import org.springframework.batch.core.Job;
+import org.springframework.batch.core.JobInstance;
+import org.springframework.batch.core.JobParameters;
+import org.springframework.batch.core.JobParametersInvalidException;
 import org.springframework.batch.core.explore.JobExplorer;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.batch.core.launch.JobOperator;
@@ -14,8 +17,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
-import java.sql.Date;
-import java.time.Instant;
 import java.util.Optional;
 
 @Configuration
@@ -33,7 +34,7 @@ public class Scheduler {
     @Autowired
     private JobExplorer jobs;
 
-    @Scheduled(cron = "0 0/1 * * * *")
+//    @Scheduled(cron = "0 0/1 * * * *")
     public void start() {
         JobInstance lastInstance = jobs.getLastJobInstance("firstBatchJob");
 

@@ -9,12 +9,17 @@ management:
 
 spring:
   datasource:
-    driver-class-name: org.postgresql.Driver
-    username: postgres
-    password: yourPassword
-    url: jdbc:postgresql://localhost:5432/batchservice
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  quartz:
+    job-store-type: jdbc
+    properties:
+      org.quartz.jobStore.isClustered: true
+      org.quartz.scheduler.instanceId: AUTO
   jpa:
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    database-platform: org.hibernate.dialect.H2Dialect
     show-sql: false
     hibernate:
       ddl-auto: update
